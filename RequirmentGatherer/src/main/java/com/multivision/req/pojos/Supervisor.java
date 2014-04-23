@@ -3,14 +3,16 @@ package com.multivision.req.pojos;
 import java.util.List;
 
 public class Supervisor extends User {
-	private long super_id;
-	private String name, email, phone;
+	private int id;
+	private String name;
+	private String email;
+	private String phone;
 	private List<Trainee> trainees;
-	public long getSuper_id() {
-		return super_id;
+	public int getId() {
+		return id;
 	}
-	public void setSuper_id(long super_id) {
-		this.super_id = super_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;

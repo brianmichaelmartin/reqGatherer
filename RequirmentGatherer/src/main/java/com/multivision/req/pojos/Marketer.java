@@ -3,14 +3,16 @@ package com.multivision.req.pojos;
 import java.util.List;
 
 public class Marketer extends User {
-	private long marketer_id;
-	private String name, email, phone;
+	private int id;
+	private String name;
+	private String email;
+	private String phone;
 	private List<Trainee> trainees;
-	public long getMarketer_id() {
-		return marketer_id;
+	public int getId() {
+		return id;
 	}
-	public void setMarketer_id(long marketer_id) {
-		this.marketer_id = marketer_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -36,4 +38,5 @@ public class Marketer extends User {
 	public void setTrainees(List<Trainee> trainees) {
 		this.trainees = trainees;
 	}
+	
 }
