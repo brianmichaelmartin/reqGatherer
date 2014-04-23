@@ -6,22 +6,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TECHSKILLS")
-public class TechSkills {
+@Table(name="ROLES")
+public class Role {
 	@Id
 	@GeneratedValue
 	private int id;
-	private String name;
+	private String role;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getRole() {
+		return role;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRole(String role) {
+		this.role = role;
 	}
+	
 }

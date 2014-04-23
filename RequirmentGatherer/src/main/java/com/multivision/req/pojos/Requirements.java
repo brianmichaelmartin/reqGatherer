@@ -2,7 +2,18 @@ package com.multivision.req.pojos;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="REQUIREMENTS")
 public class Requirements {
+	@Id
+	@GeneratedValue
 	private int id;
 	private String city;
 	private String state;
@@ -11,7 +22,11 @@ public class Requirements {
 	private String vender;
 	private String duration;
 	private int experience; //in years
+	@OneToMany
+	@JoinColumn(name="id")
 	private List<Status> status;
+	@OneToMany
+	@JoinColumn(name="id")
 	private List<Status> techSkills;
 	public int getId() {
 		return id;

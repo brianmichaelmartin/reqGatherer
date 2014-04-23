@@ -3,16 +3,34 @@ package com.multivision.req.pojos;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TRAINEES")
 public class Trainee extends User{
+	@Id
+	@GeneratedValue
 	private int id;
 	private String name;
 	private String email;
 	private String phone;
 	private String skype;
+	@ManyToOne
+	@JoinColumn(name="id")
 	private Marketer marketer;
+	@ManyToOne
+	@JoinColumn(name="id")
 	private Supervisor supervisor;
 	private Date dateOnMarket;
-	private List<Status> statuses;
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Status> status;
 	public int getId() {
 		return id;
 	}
@@ -61,11 +79,10 @@ public class Trainee extends User{
 	public void setDateOnMarket(Date dateOnMarket) {
 		this.dateOnMarket = dateOnMarket;
 	}
-	public List<Status> getStatuses() {
-		return statuses;
+	public List<Status> getStatus() {
+		return status;
 	}
-	public void setStatuses(List<Status> statuses) {
-		this.statuses = statuses;
+	public void setStatus(List<Status> status) {
+		this.status = status;
 	}
-	
 }

@@ -2,7 +2,15 @@ package com.multivision.req.pojos;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="INTERVIEWS")
 public class Interview {
+	@Id
+	@GeneratedValue
 	private int id;
 	private String type;
 	//Completed, in progress, upcoming, postphoned, etc

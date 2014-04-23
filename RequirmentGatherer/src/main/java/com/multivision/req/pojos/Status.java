@@ -3,13 +3,28 @@ package com.multivision.req.pojos;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+@Entity
+@Table(name="STATUSES")
 public class Status {
+	@Id
+	@GeneratedValue
 	private int id;
 	private String venderCall;
 	private String status;
 	private String outcome;
 	private Date lastUpdated;
+	@ManyToOne
+	@JoinColumn(name="id")
 	private Requirements requirments;
+	@OneToMany
+	@JoinColumn(name="id")
 	private List<Interview> interviews;
 	public int getId() {
 		return id;
