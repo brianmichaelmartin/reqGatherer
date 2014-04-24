@@ -3,8 +3,8 @@ package com.multivision.req.pojos;
 
 
 public class User {
-	private String username;
-	private String password;
+	protected String username;
+	protected String password;
 	
 	public String getUsername() {
 		return username;

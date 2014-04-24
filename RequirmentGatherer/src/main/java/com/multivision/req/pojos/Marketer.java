@@ -3,8 +3,6 @@ package com.multivision.req.pojos;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -12,21 +10,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="MARKETERS")
 public class Marketer extends User {
-	@Id
-	@GeneratedValue
-	private int id;
 	private String name;
 	private String email;
 	private String phone;
 	@OneToMany
 	@JoinColumn(name="id")
 	private List<Trainee> trainees;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getName() {
 		return name;
 	}

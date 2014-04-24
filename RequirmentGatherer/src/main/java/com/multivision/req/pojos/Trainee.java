@@ -4,8 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -14,9 +12,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="TRAINEES")
 public class Trainee extends User{
-	@Id
-	@GeneratedValue
-	private int id;
 	private String name;
 	private String email;
 	private String phone;
@@ -31,12 +26,6 @@ public class Trainee extends User{
 	@OneToMany
 	@JoinColumn(name="id")
 	private List<Status> status;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getName() {
 		return name;
 	}
