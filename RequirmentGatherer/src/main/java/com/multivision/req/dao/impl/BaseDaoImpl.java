@@ -16,7 +16,7 @@ import com.multivision.req.exception.HibernateOperationFailedException;
 /**
  * 
  * @author Brian Martin
- * Adapted from eHRMS
+ * Adapted from eHRMS 
  */
 public class BaseDaoImpl {
 	Logger logger = Logger.getRootLogger();
