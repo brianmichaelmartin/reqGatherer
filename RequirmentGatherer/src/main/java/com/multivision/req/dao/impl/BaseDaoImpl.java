@@ -174,11 +174,11 @@ public class BaseDaoImpl {
 	 * @param key
 	 * @return
 	 */
-	@SuppressWarnings("unused")
-	private Object retrieveByKey(Object type, String key){
+	protected Object retrieveByKey(Object type, String field, String key){
 		Object obj = null;
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
+		
 		
 		
 		return obj;
