@@ -13,7 +13,11 @@ import org.hibernate.criterion.SimpleExpression;
 
 import com.multivision.req.exception.HibernateOperationFailedException;
 
-
+/**
+ * 
+ * @author Brian Martin
+ * Adapted from eHRMS
+ */
 public class BaseDaoImpl {
 	Logger logger = Logger.getRootLogger();
 	private SessionFactory factory = null;
