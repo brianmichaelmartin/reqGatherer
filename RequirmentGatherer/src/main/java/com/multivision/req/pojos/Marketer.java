@@ -2,13 +2,15 @@ package com.multivision.req.pojos;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="MARKETERS")
+@Table(name="USERS")
+@DiscriminatorValue("M")
 public class Marketer extends User {
 	private String name;
 	private String email;

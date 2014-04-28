@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -19,7 +20,7 @@ import com.multivision.req.exception.HibernateOperationFailedException;
  * Adapted from eHRMS 
  */
 public class BaseDaoImpl {
-	Logger logger = Logger.getRootLogger();
+	protected Logger logger = Logger.getRootLogger();
 	private SessionFactory factory = null;
 	public SessionFactory getFactory() {
 		return factory;
@@ -111,8 +112,8 @@ public class BaseDaoImpl {
 	 * @param type object to retrieve all persisted instances of
 	 * @return all persisted instances of aforementioned object
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected List retrieveAll(Object type){
+	@SuppressWarnings({ "unchecked" })
+	protected List<Object> retrieveAll(Object type){
 		List<Object> objects = null;
 		Session session = factory.getCurrentSession();
 		try {
@@ -138,8 +139,8 @@ public class BaseDaoImpl {
 	 * @param filters a list of filters to narrow search results
 	 * @return all persisted instances that fit applied filters
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected List retrieveByCriteria(Object type, List<FilterCondition> filters){
+	@SuppressWarnings({ "unchecked" })
+	protected List<Object> retrieveByCriteria(Object type, List<FilterCondition> filters){
 		List<Object> objects = null;
 		Session session = null;
 		try {
@@ -182,6 +183,29 @@ public class BaseDaoImpl {
 		
 		
 		return obj;
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected List<Object> nativeSql(String stmt){
+		List<Object> objects = null;
+		Session session = factory.getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(stmt);
+			objects = query.list();
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			logger.error("Failed to retrieve objects from database");
+			e.printStackTrace();
+		} finally{
+			try {
+				session.close();
+			} catch (HibernateException e) {
+				e.printStackTrace();
+			}
+		}
+		return objects;
 	}
 	
 	/**
